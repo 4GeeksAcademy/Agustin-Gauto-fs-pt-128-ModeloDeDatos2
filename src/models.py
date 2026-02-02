@@ -25,7 +25,7 @@ class User(db.Model):
         secondary = follower,
         primaryjoin = (id == follower.c.user_from_id),
         secondaryjoin = (id == follower.c.user_to_id),
-        back_populates = "followers"
+        backref = "followers"
     )
     posts: Mapped[list["Post"]] = relationship(back_populates = "author")
     comments: Mapped[list["Comment"]] = relationship(back_populates= "author")
