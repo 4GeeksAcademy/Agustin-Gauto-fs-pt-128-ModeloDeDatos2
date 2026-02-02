@@ -21,7 +21,7 @@ class User(db.Model):
     email: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(nullable=False)
     following: Mapped[list["User"]] = relationship(
-        "user",
+        "User",
         secondary = follower,
         primaryjoin = (id == follower.c.user_from_id),
         secondaryjoin = (id == follower.c.user_to_id),
